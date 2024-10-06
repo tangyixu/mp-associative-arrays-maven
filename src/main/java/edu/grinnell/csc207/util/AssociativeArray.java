@@ -256,8 +256,8 @@ public class AssociativeArray<K, V> {
       if(this.pairs[n].key.equals(key))
       {
        return n;
-      } 
-    }
+      }//if
+    }//for loop
     throw new KeyNotFoundException("The key is not found.");
   } // find(K)
 
