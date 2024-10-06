@@ -70,9 +70,14 @@ public class AssociativeArray<K, V> {
   public AssociativeArray<K, V> clone() {
     AssociativeArray<K,V> copy = new AssociativeArray<>();
     copy.size = this.size;
+    K key = null;
+    V value = null;
     for(int n = 0; n < this.size; n++)
-    {
-       copy.pairs[n] = this.pairs[n];
+    { 
+      key = this.pairs[n].key;
+      value = this.pairs[n].val;
+      copy.pairs[n] = new KVPair<>(key,value);
+      
     }//for loop
     return copy;
   } // clone()
