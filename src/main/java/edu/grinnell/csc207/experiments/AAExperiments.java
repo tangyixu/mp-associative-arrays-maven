@@ -103,6 +103,7 @@ public class AAExperiments {
 
     // However, after setting that key, we should be able to get it.
     set(pen, strings2strings, "k", "key");
+    set(pen, strings2strings, "ak", "akey");
     hasKey(pen, strings2strings, "k");
     get(pen, strings2strings, "k");
 
@@ -114,7 +115,6 @@ public class AAExperiments {
     set(pen, strings2strings, null, "nothing");
     hasKey(pen, strings2strings, null);
     get(pen, strings2strings, null);
-
     // And we're done.
     pen.close();
   } // main(String[])

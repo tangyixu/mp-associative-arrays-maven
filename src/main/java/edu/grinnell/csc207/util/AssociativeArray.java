@@ -84,11 +84,13 @@ public class AssociativeArray<K, V> {
    */
   public String toString() {
     String result = "{";
-    for(KVPair<K,V> x : pairs)
+    for(int n = 0; n < this.size - 1; n++)
     {
-      result += x.toString()+",";
+      result += this.pairs[n].toString()+", ";
     }//for loop
+
     result += this.pairs[this.size - 1].toString() + "}";
+    System.out.println(result);
     return result;
   } // toString()
 
@@ -109,32 +111,41 @@ public class AssociativeArray<K, V> {
    *   If the client provides a null key.
    */
   public void set(K key, V value) throws NullKeyException {
+    PrintWriter pen = new PrintWriter(System.out,true);
     if(value.equals(null))
      {
       throw new NullKeyException("A null key is.");
-     }
-    else
-    {
-     for(int n = 0; n < this.size-1; n++){
-      if(this.pairs[n].key.equals(key))
+     }//if
+    if(hasKey(key))
+    { 
+      try {
+        this.pairs[find(key)].val = value;
+      } catch (KeyNotFoundException e) {
+        pen.println("Key is not found.");
+      }//try-catch
+    }//if
+    else{
+      if (this.size == 0){
+        this.size = 1;
+        this.expand();
+        this.pairs[0] = new KVPair<K,V>();
+        this.pairs[0].key = key;
+        this.pairs[0].val = value;
+      }//if there is no pairs
+      else
       {
-       this.pairs[n].val = value;
-       return;
-      }//if
-      if(this.pairs[n].key.equals(null))
-      {
-        this.pairs[n].key = key;
-        this.pairs[n].val = value;
-        return;
-      }//if
-     }//for loop
-
-     int a = this.size - 1;
-     this.expand();
-     this.pairs[a].key = key;
-     this.pairs[a].val = value;
-    } 
-   } // set(K,V)
+       for(int n = 0; n < this.size-1; n++){
+        if(this.pairs[n].key.equals(null))
+        {
+          this.pairs[n] = new KVPair<K,V>();
+          this.pairs[n].key = key;
+          this.pairs[n].val = value;
+          return;
+        }//if
+       }//for loop
+      }//else
+    }//else
+  } // set(K,V)
 
   /**
    * Get the value associated with key.
@@ -170,7 +181,7 @@ public class AssociativeArray<K, V> {
    * @return true if the key appears and false otherwise.
    */
   public boolean hasKey(K key) {
-    if(key.equals(null))
+    if(key.equals(null)||this.size == 0)
     {
       return false;
     }//if
@@ -195,7 +206,7 @@ public class AssociativeArray<K, V> {
    *   The key to remove.
    */
   public void remove(K key) {
-    PrintWriter pen = new PrintWriter(FILE);
+    PrintWriter pen = new PrintWriter(System.out,true);
     if(this.hasKey(key))
     {
       try {

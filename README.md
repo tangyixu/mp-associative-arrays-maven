@@ -1,7 +1,10 @@
 Associative Arrays
 ==================
 
-Starter code for a CSC-207 project on associative arrays.
+Author: Tiffany Tang
+Date: 10/5
+Citations:
+ <https://github.com/Grinnell-CSC207/lab-linear-structures-maven/blob/main/src/main/java/edu/grinnell/csc207/linear/ReportingLinearStructure.java>
+ <https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html>
 
-_Students must replace the contents of this file with appropriate
-contents, including class, author, date, and URL._
+Repository can be found at <https://github.com/tangyixu/mp-associative-arrays-maven.git>
