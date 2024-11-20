@@ -16,13 +16,18 @@ import org.junit.jupiter.api.Test;
 /**
  * A place for you to put your own tests (beyond the shared repo).
  *
- * @author Your Name Here
+ * @author Tiffany Tang
  */
 public class TestsFromStudent {
   /**
-   * A simple test.
+   * Tests if the set function works properly for setting a existed key in the list.
    */
   @Test
-  public void alwaysPass() throws Exception {
-  } // alwaysPass()
+  public void doubleSetTest() throws Exception {
+    AssociativeArray<String, String> test = 
+    new AssociativeArray<String, String>();
+    test.set("a", "aardvark");
+    test.set("a", "apple");
+    assertEquals("apple", test.get("a"), "Supposed to return the newest value we set (apple).");
+  } // doubleSetTest()
 } // class TestsFromSam

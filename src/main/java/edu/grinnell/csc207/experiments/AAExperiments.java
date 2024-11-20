@@ -103,7 +103,6 @@ public class AAExperiments {
 
     // However, after setting that key, we should be able to get it.
     set(pen, strings2strings, "k", "key");
-    set(pen, strings2strings, "ak", "akey");
     hasKey(pen, strings2strings, "k");
     get(pen, strings2strings, "k");
 

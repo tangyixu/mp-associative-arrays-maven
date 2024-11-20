@@ -77,7 +77,7 @@ public class AssociativeArray<K, V> {
       key = this.pairs[n].key;
       value = this.pairs[n].val;
       copy.pairs[n] = new KVPair<>(key,value);
-      
+
     }//for loop
     return copy;
   } // clone()
@@ -116,40 +116,23 @@ public class AssociativeArray<K, V> {
    *   If the client provides a null key.
    */
   public void set(K key, V value) throws NullKeyException {
-    PrintWriter pen = new PrintWriter(System.out,true);
     if(value.equals(null))
      {
       throw new NullKeyException("A null key is.");
-     }//if
-    if(hasKey(key))
-    { 
-      try {
-        this.pairs[find(key)].val = value;
-      } catch (KeyNotFoundException e) {
-        pen.println("Key is not found.");
-      }//try-catch
-    }//if
-    else{
-      if (this.size == 0){
-        this.size = 1;
+     } //if
+    else if(this.size == 0){
         this.expand();
         this.pairs[0] = new KVPair<K,V>();
         this.pairs[0].key = key;
         this.pairs[0].val = value;
-      }//if there is no pairs
-      else
+      } //else if
+    else
       {
-       for(int n = 0; n < this.size-1; n++){
-        if(this.pairs[n].key.equals(null))
-        {
-          this.pairs[n] = new KVPair<K,V>();
-          this.pairs[n].key = key;
-          this.pairs[n].val = value;
-          return;
-        }//if
-       }//for loop
-      }//else
-    }//else
+        try {
+          this.pairs[find(key)].val = value;
+        } catch (KeyNotFoundException e) {
+        } //try-catch
+      } //else
   } // set(K,V)
 
   /**
@@ -193,10 +176,13 @@ public class AssociativeArray<K, V> {
     else
     {
       for(KVPair<K,V> x : this.pairs){
-        if(x.key.equals(key))
+        while(x!=null)
+        {
+          if(x.key.equals(key))
         {
           return true;
         }//if
+        }//while  
       }//for loop
       return false;
     }//else
@@ -240,7 +226,7 @@ public class AssociativeArray<K, V> {
    * Expand the underlying array.
    */
   void expand() {
-    this.pairs = java.util.Arrays.copyOf(this.pairs, this.pairs.length * 2);
+    this.pairs = java.util.Arrays.copyOf(this.pairs, this.pairs.length * 2 + 1);
   } // expand()
 
   /**
