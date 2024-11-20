@@ -115,7 +115,7 @@ public class AssociativeArray<K, V> {
    * @throws NullKeyException
    *   If the client provides a null key.
    */
-  public void set(K key, V value) throws NullKeyException {
+  public void set(K key, V value) throws NullKeyException, KeyNotFoundException {
     if(value.equals(null))
      {
       throw new NullKeyException("A null key is.");
@@ -128,10 +128,7 @@ public class AssociativeArray<K, V> {
       } //else if
     else
       {
-        try {
-          this.pairs[find(key)].val = value;
-        } catch (KeyNotFoundException e) {
-        } //try-catch
+        this.pairs[find(key)].val = value;
       } //else
   } // set(K,V)
 
