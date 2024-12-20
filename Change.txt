@@ -1,0 +1,8 @@
+
+Changes
+
+1) Fixed AssociativeArray.java to pass all Sam's tests.
+
+2) Fixed styles.
+
+3) Added my own tests to the shard file.
