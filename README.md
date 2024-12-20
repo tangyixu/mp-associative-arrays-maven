@@ -2,9 +2,12 @@ Associative Arrays
 ==================
 
 Author: Tiffany Tang
-Date: 10/5
+
+Date: 12/20
+
 Citations:
  <https://github.com/Grinnell-CSC207/lab-linear-structures-maven/blob/main/src/main/java/edu/grinnell/csc207/linear/ReportingLinearStructure.java>
- <https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html>
+
+ Shared tests are written collectively by CSC207 students and Sam.
 
 Repository can be found at <https://github.com/tangyixu/mp-associative-arrays-maven.git>
