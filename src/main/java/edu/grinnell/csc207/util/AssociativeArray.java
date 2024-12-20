@@ -102,7 +102,7 @@ public class AssociativeArray<K, V> {
    * @param value
    *              The value of that key.
    */
-  public void set(K keys, V value) throws NullKeyException {
+  public void set(K keys, V value) {
     try {
       this.pairs[find(keys)].val = value;
     } catch (Exception e) {
@@ -126,7 +126,7 @@ public class AssociativeArray<K, V> {
    *                              associative array.
    */
   public V get(K key) throws NullKeyException, KeyNotFoundException {
-    if (key.equals(null)) {
+    if (key == null) {
       throw new NullKeyException("A null key is provided.");
     } // if
     return this.pairs[find(key)].val;
