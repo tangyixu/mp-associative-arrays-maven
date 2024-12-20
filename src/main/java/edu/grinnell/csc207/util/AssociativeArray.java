@@ -81,6 +81,9 @@ public class AssociativeArray<K, V> {
    * @return a string of the form "{Key0:Value0, Key1:Value1, ... KeyN:ValueN}"
    */
   public String toString() {
+    if (this.size == 0) {
+      return "{}";
+    } // if
     String result = "{";
     for (int n = 0; n < this.size - 1; n++) {
       result += this.pairs[n].toString() + ", ";
@@ -101,8 +104,12 @@ public class AssociativeArray<K, V> {
    *              The key whose value we are seeting.
    * @param value
    *              The value of that key.
+   * @throws NullKeyException
    */
-  public void set(K keys, V value) {
+  public void set(K keys, V value) throws NullKeyException {
+    if (keys == null) {
+      throw new NullKeyException();
+    } // if
     try {
       this.pairs[find(keys)].val = value;
     } catch (Exception e) {
@@ -125,9 +132,9 @@ public class AssociativeArray<K, V> {
    *                              when the key is null or does not appear in the
    *                              associative array.
    */
-  public V get(K key) throws NullKeyException, KeyNotFoundException {
+  public V get(K key) throws KeyNotFoundException {
     if (key == null) {
-      throw new NullKeyException("A null key is provided.");
+      throw new KeyNotFoundException("A null key is provided.");
     } // if
     return this.pairs[find(key)].val;
   } // get(K)
